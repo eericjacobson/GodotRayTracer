@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjynik6v558fe"]
+
+[ext_resource type="Script" uid="uid://dslhk1yuscs8g" path="res://render/render_scene.gd" id="1_ij3qo"]
+[ext_resource type="Shader" uid="uid://dmvw6y2xttddm" path="res://shaders/raytracer.gdshader" id="1_tds20"]
+[ext_resource type="Shader" uid="uid://cnifj7nyqtnio" path="res://shaders/accumulate.gdshader" id="2_ij3qo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ij3qo"]
+resource_local_to_scene = true
+shader = ExtResource("1_tds20")
+shader_parameter/viewParams = Vector3(0, 0, 0)
+shader_parameter/localToWorldMatrix = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/Frame = 0
+shader_parameter/MaxBounceCount = 0
+shader_parameter/NumRaysPerPixel = 0
+shader_parameter/NumMeshes = 0
+shader_parameter/NumSpheres = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_msfhw"]
+viewport_path = NodePath("RayTracer")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y286s"]
+resource_local_to_scene = true
+shader = ExtResource("2_ij3qo")
+shader_parameter/NumRenderedFrames = 0
+shader_parameter/newTex = SubResource("ViewportTexture_msfhw")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y5wyu"]
+viewport_path = NodePath("Accumulator")
+
+[node name="RenderScene" type="SubViewportContainer" node_paths=PackedStringArray("ray_tracer_viewport", "accumulator_viewport", "ray_tracer_canvas", "accumulator_canvas")]
+script = ExtResource("1_ij3qo")
+ray_tracer_viewport = NodePath("RayTracer")
+accumulator_viewport = NodePath("Accumulator")
+ray_tracer_canvas = NodePath("RayTracer/RayTracerCanvas")
+accumulator_canvas = NodePath("Accumulator/AccumulatorCanvas")
+
+[node name="RayTracer" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="RayTracerCanvas" type="ColorRect" parent="RayTracer"]
+material = SubResource("ShaderMaterial_ij3qo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Accumulator" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_clear_mode = 2
+render_target_update_mode = 4
+
+[node name="AccumulatorCanvas" type="ColorRect" parent="Accumulator"]
+material = SubResource("ShaderMaterial_y286s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Router" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("ViewportTexture_y5wyu")

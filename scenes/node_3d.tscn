@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=3 uid="uid://be37ecp6gqk37"]
+
+[ext_resource type="Script" uid="uid://cgymnepjmipjg" path="res://objects/ray_tracing_material.gd" id="2_5t4e2"]
+[ext_resource type="Script" uid="uid://csiqt4xmk7shg" path="res://objects/ray_mesh.gd" id="3_5t4e2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ns6u7"]
+size = Vector3(3.04, 0.1, 3)
+
+[sub_resource type="Resource" id="Resource_ns6u7"]
+script = ExtResource("2_5t4e2")
+color = Color(0.551635, 0.466795, 0.988513, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvgsr"]
+size = Vector3(3.04, 0.1, 3)
+
+[sub_resource type="Resource" id="Resource_5t4e2"]
+script = ExtResource("2_5t4e2")
+color = Color(1, 0.905882, 0.121569, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_a6664"]
+size = Vector3(0.1, 3, 3)
+
+[sub_resource type="Resource" id="Resource_xvgsr"]
+script = ExtResource("2_5t4e2")
+color = Color(0.254322, 0.663062, 0.309831, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cptob"]
+size = Vector3(0.1, 3, 3)
+
+[sub_resource type="Resource" id="Resource_oqwcg"]
+script = ExtResource("2_5t4e2")
+color = Color(0.0504233, 0.614735, 0.824835, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_q712h"]
+size = Vector3(3, 3, 0.1)
+
+[sub_resource type="Resource" id="Resource_a6664"]
+script = ExtResource("2_5t4e2")
+color = Color(0.889836, 0.371869, 0.398903, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_ns6u7"]
+
+[sub_resource type="Resource" id="Resource_10v3s"]
+script = ExtResource("2_5t4e2")
+color = Color(0, 0, 0, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 2.98
+
+[sub_resource type="QuadMesh" id="QuadMesh_ns6u7"]
+size = Vector2(3, 3)
+
+[sub_resource type="Resource" id="Resource_cptob"]
+script = ExtResource("2_5t4e2")
+color = Color(0.904162, 0.909217, 0.909309, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_ns6u7"]
+inner_radius = 0.415
+outer_radius = 1.205
+
+[sub_resource type="Resource" id="Resource_b2yaj"]
+script = ExtResource("2_5t4e2")
+color = Color(0.968616, 0.359811, 0.826563, 1)
+emission_color = Color(1, 1, 1, 1)
+emission_strength = 0.0
+
+[node name="sphere_half_bytes" type="Node3D"]
+
+[node name="RayMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ns6u7")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_ns6u7")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_xvgsr")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_5t4e2")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0)
+mesh = SubResource("BoxMesh_a6664")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_xvgsr")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
+mesh = SubResource("BoxMesh_cptob")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_oqwcg")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.5)
+mesh = SubResource("BoxMesh_q712h")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_a6664")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.295, 0)
+mesh = SubResource("PrismMesh_ns6u7")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_10v3s")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)
+mesh = SubResource("QuadMesh_ns6u7")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_cptob")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
+
+[node name="RayMesh8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.587785, -0.809017, 0, 0.809017, 0.587785, 0, 1.3444, 0)
+mesh = SubResource("TorusMesh_ns6u7")
+script = ExtResource("3_5t4e2")
+_material = SubResource("Resource_b2yaj")
+metadata/_custom_type_script = "uid://csiqt4xmk7shg"
